@@ -1,0 +1,13 @@
+version: "3"
+services:
+    postgres:
+      image: postgres:10.4-alpine
+      container_name: nodejs-postgres
+      environment:
+        POSTGRES_USER: ${POSTGRES_USER}
+        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      ports:
+       - 3307:5432
+      volumes:
+       - ./database/message.sql:/docker-entrypoint-initdb.d/1-message.sql
+
